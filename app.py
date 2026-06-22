@@ -19,8 +19,11 @@ print("Network Scanner Started")
 print("=" * 50)
 
 # Step 1 - Discover Hosts
-discover_hosts()
+hosts = discover_hosts()
 
+if not hosts:
+    print("[!] No hosts discovered")
+    exit()
 # Step 2 - Find Open Ports
 scan_ports()
 

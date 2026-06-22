@@ -1,39 +1,56 @@
 import subprocess
-import re
-
 from utils import save_json
 
 def discover_hosts():
 
     print("[+] Discovering Hosts")
 
-    result = subprocess.run(
-        ["arp-scan", "--localnet"],
-        capture_output=True,
-        text=True
-    )
+    try:
 
-    pattern = r"(\d+\.\d+\.\d+\.\d+)\s+([0-9a-fA-F:]+)"
+        result = subprocess.run(
+            ["arp-scan", "--localnet"],
+            capture_output=True,
+            text=True
+        )
 
-    matches = re.findall(pattern, result.stdout)
+        print("\n=== ARP SCAN OUTPUT ===")
+        print(result.stdout)
+        print("=======================\n")
 
-    hosts = []
+        hosts = []
 
-    for ip, mac in matches:
+        for line in result.stdout.splitlines():
 
-        hosts.append({
-            "ip": ip,
-            "mac": mac,
-            "hostname": "",
-            "ports": [],
-            "services": {},
-            "os": "",
-            "firewall": "",
-            "ssl": {}
-        })
+            parts = line.split()
 
-    save_json("results/hosts.json", hosts)
+            if len(parts) < 2:
+                continue
 
-    print(f"[+] Found {len(hosts)} hosts")
+            ip = parts[0]
+            mac = parts[1]
 
-    return hosts
+            # Validate IP and MAC
+            if "." in ip and ":" in mac:
+
+                hosts.append({
+                    "ip": ip,
+                    "mac": mac,
+                    "hostname": "",
+                    "ports": [],
+                    "services": {},
+                    "os": "",
+                    "firewall": "",
+                    "ssl": {}
+                })
+
+        save_json("results/hosts.json", hosts)
+
+        print(f"[+] Found {len(hosts)} hosts")
+
+        return hosts
+
+    except Exception as e:
+
+        print(f"[!] Host Discovery Error: {e}")
+
+        return []
