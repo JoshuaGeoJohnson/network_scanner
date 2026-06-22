@@ -1,0 +1,15 @@
+{
+    "gateway": "10.33.150.130",
+    "devices": [
+        {
+            "ip": "10.33.150.79",
+            "mac": "12:e9:da:28:c4:ef",
+            "os": "Microsoft Windows 11|10|2008 (92%), FreeBSD 6.X (88%)"
+        },
+        {
+            "ip": "10.33.150.130",
+            "mac": "32:6d:01:e2:47:06",
+            "os": "Google Android 9.X|10.X|11.X, Linux 4.X"
+        }
+    ]
+}

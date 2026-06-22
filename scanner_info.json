@@ -1,0 +1,24 @@
+{
+    "host_discovery": [
+        "arp-scan",
+        "netdiscover"
+    ],
+    "port_scanner": [
+        "nmap"
+    ],
+    "service_detection": [
+        "nmap -sV"
+    ],
+    "os_detection": [
+        "nmap -O"
+    ],
+    "hostname_detection": [
+        "nbtscan"
+    ],
+    "firewall_detection": [
+        "nmap -sA"
+    ],
+    "ssl_detection": [
+        "sslscan"
+    ]
+}

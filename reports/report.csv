@@ -1,0 +1,3 @@
+IP,MAC,OS,Ports,Firewall
+10.33.150.79,ea:01:55:50:99:26,"Microsoft Windows 11|10|2008 (92%), FreeBSD 6.X (88%)",7070,Detected
+10.33.150.130,32:f1:b7:c6:cf:e8,"Google Android 9.X|10.X|11.X, Linux 4.X",53,Detected

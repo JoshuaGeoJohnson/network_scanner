@@ -1,0 +1,43 @@
+[
+    {
+        "ip": "10.33.150.79",
+        "mac": "ea:01:55:50:99:26",
+        "hostname": "",
+        "ports": [
+            7070
+        ],
+        "services": {
+            "7070": {
+                "service": "ssl/realserver?",
+                "version": ""
+            }
+        },
+        "os": "Microsoft Windows 11|10|2008 (92%), FreeBSD 6.X (88%)",
+        "firewall": "Detected",
+        "web": {},
+        "ssl": {
+            "port": 7070,
+            "tls12": true,
+            "tls13": false,
+            "certificate_subject": "AnyDesk Client"
+        }
+    },
+    {
+        "ip": "10.33.150.130",
+        "mac": "32:f1:b7:c6:cf:e8",
+        "hostname": "",
+        "ports": [
+            53
+        ],
+        "services": {
+            "53": {
+                "service": "domain",
+                "version": "dnsmasq 2.51"
+            }
+        },
+        "os": "Google Android 9.X|10.X|11.X, Linux 4.X",
+        "firewall": "Detected",
+        "web": {},
+        "ssl": {}
+    }
+]
