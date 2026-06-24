@@ -1,14 +1,14 @@
 [
     {
-        "ip": "10.33.150.116",
-        "port": 7070,
-        "service": "ssl/realserver?",
-        "risk": "Low"
-    },
-    {
         "ip": "10.33.150.130",
         "port": 53,
         "service": "domain",
+        "risk": "Low"
+    },
+    {
+        "ip": "10.33.150.235",
+        "port": 7070,
+        "service": "ssl/realserver?",
         "risk": "Low"
     }
 ]

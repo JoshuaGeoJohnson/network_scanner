@@ -1,22 +1,22 @@
 [
     {
-        "ip": "10.33.150.116",
-        "services": {
-            "7070": {
-                "port": "7070",
-                "service": "ssl/realserver?",
-                "version": "",
-                "protocol": "tcp"
-            }
-        }
-    },
-    {
         "ip": "10.33.150.130",
         "services": {
             "53": {
                 "port": "53",
                 "service": "domain",
                 "version": "dnsmasq 2.51",
+                "protocol": "tcp"
+            }
+        }
+    },
+    {
+        "ip": "10.33.150.235",
+        "services": {
+            "7070": {
+                "port": "7070",
+                "service": "ssl/realserver?",
+                "version": "",
                 "protocol": "tcp"
             }
         }

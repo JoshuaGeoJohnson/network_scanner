@@ -1,6 +1,18 @@
 [
     {
-        "ip": "10.33.150.116",
+        "ip": "10.33.150.130",
+        "port": 53,
+        "service": "domain",
+        "version": "dnsmasq 2.51",
+        "protocol": "tcp",
+        "os_family": "Android",
+        "firewall": {
+            "status": "Detected",
+            "gateway": "10.33.150.130"
+        }
+    },
+    {
+        "ip": "10.33.150.235",
         "port": 7070,
         "service": "AnyDesk Remote Access",
         "version": "",
@@ -16,17 +28,5 @@
         "certificate_valid_from": "Jan 17 03:00:52 2026 GMT",
         "certificate_valid_until": "Jan  5 03:00:52 2076 GMT",
         "certificate_status": "Valid"
-    },
-    {
-        "ip": "10.33.150.130",
-        "port": 53,
-        "service": "domain",
-        "version": "dnsmasq 2.51",
-        "protocol": "tcp",
-        "os_family": "Android",
-        "firewall": {
-            "status": "Detected",
-            "gateway": "10.33.150.130"
-        }
     }
 ]
