@@ -36,10 +36,63 @@ def build_fingerprints():
                 ""
             )
 
-            # Improve service identification
+            version_lower = (
+                version.lower()
+            )
 
-            if (
-                "ssl/realserver" in service_name.lower()
+            # Product identification from version string
+
+            if "dnsmasq" in version_lower:
+
+                service_name = "dnsmasq"
+
+            elif "isc bind" in version_lower:
+
+                service_name = "bind"
+
+            elif "bind" in version_lower:
+
+                service_name = "bind"
+
+            elif "openssh" in version_lower:
+
+                service_name = "openssh"
+
+            elif "vsftpd" in version_lower:
+
+                service_name = "vsftpd"
+
+            elif "proftpd" in version_lower:
+
+                service_name = "proftpd"
+
+            elif "apache httpd" in version_lower:
+
+                service_name = "apache"
+
+            elif "apache" in version_lower:
+
+                service_name = "apache"
+
+            elif "mysql" in version_lower:
+
+                service_name = "mysql"
+
+            elif "postgresql" in version_lower:
+
+                service_name = "postgresql"
+
+            elif "samba" in version_lower:
+
+                service_name = "samba"
+
+            elif "unrealircd" in version_lower:
+
+                service_name = "unrealircd"
+
+            elif (
+                "ssl/realserver"
+                in service_name.lower()
                 and host["ssl"]
             ):
 
@@ -74,14 +127,24 @@ def build_fingerprints():
                     "Unknown"
                 ),
 
-                "firewall": host.get(
-                    "firewall",
-                    {}
-                )
+                "firewall_status":
+                    host.get(
+                        "firewall",
+                        {}
+                    ).get(
+                        "status",
+                        "Unknown"
+                    ),
 
+                "firewall_ip":
+                    host.get(
+                        "firewall",
+                        {}
+                    ).get(
+                        "device_ip",
+                        "Unknown"
+                    )
             }
-
-            # SSL Information
 
             if host["ssl"]:
 

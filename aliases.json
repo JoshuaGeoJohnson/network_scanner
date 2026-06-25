@@ -1,0 +1,57 @@
+{
+    "openssh": [
+        "openssh",
+        "ssh"
+    ],
+
+    "apache": [
+        "apache",
+        "apache httpd",
+        "httpd"
+    ],
+
+    "tomcat": [
+        "apache tomcat",
+        "apache jserv",
+        "coyote"
+    ],
+
+    "bind": [
+        "bind",
+        "isc bind"
+    ],
+
+    "dnsmasq": [
+        "dnsmasq"
+    ],
+
+    "mysql": [
+        "mysql"
+    ],
+
+    "postgresql": [
+        "postgresql",
+        "postgres"
+    ],
+
+    "vsftpd": [
+        "vsftpd"
+    ],
+
+    "proftpd": [
+        "proftpd"
+    ],
+
+    "samba": [
+        "samba",
+        "smbd"
+    ],
+
+    "distccd": [
+        "distccd"
+    ],
+
+    "unrealircd": [
+        "unrealircd"
+    ]
+}

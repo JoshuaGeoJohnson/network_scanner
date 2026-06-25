@@ -11,7 +11,11 @@ from vulnerability_mapping import map_risks
 from network_topology import build_topology
 from export_results import export_results
 from master_export import create_master_scan
-
+from cve_mapping import map_cves
+from banner_grabber import grab_banners
+from vulne_mapping import (
+    map_vulne_cves
+)
 print("=" * 50)
 print("Network Scanner Started")
 print("=" * 50)
@@ -61,6 +65,9 @@ scan_ports(
 # Step 3 - Service Detection
 detect_services()
 
+# Banner Grabbing
+grab_banners()
+
 # Step 4 - OS Detection
 detect_os()
 
@@ -79,9 +86,22 @@ detect_ssl()
 # Step 9 - Fingerprinting
 build_fingerprints()
 
-# Step 10 - Risk Mapping
-map_risks()
+# Step 10 - Local CVE Engine
+map_cves()
 
+# Step 11 - Vulne API Engine
+try:
+
+    map_vulne_cves()
+
+except Exception as e:
+
+    print(
+        f"[!] Vulne Engine Failed: {e}"
+    )
+
+# Step 12 - Risk Mapping
+map_risks()
 # Step 11 - Topology
 build_topology()
 

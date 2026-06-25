@@ -54,14 +54,14 @@ def detect_firewall():
 
             host["firewall"] = {
                 "status": "Detected",
-                "gateway": gateway
+                "device_ip": gateway
             }
 
         else:
 
             host["firewall"] = {
                 "status": "Not Detected",
-                "gateway": gateway
+                "device_ip": gateway
             }
 
     save_json(

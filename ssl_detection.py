@@ -2,7 +2,8 @@ import subprocess
 import re
 from datetime import datetime
 
-from utils import load_json, save_json
+from utils import load_json
+from utils import save_json
 
 
 def detect_ssl():
@@ -72,6 +73,38 @@ def detect_ssl():
                     "Unknown"
                 )
 
+                days_remaining = None
+
+                tls_status = (
+                    "Unknown"
+                )
+
+                recommended_tls = (
+                    "TLS 1.3"
+                )
+
+                # TLS Evaluation
+
+                if tls13:
+
+                    tls_status = (
+                        "Strong"
+                    )
+
+                elif tls12:
+
+                    tls_status = (
+                        "Acceptable"
+                    )
+
+                else:
+
+                    tls_status = (
+                        "Weak"
+                    )
+
+                # Certificate Subject
+
                 subject_match = re.search(
                     r"Subject:\s+(.*)",
                     output
@@ -87,6 +120,8 @@ def detect_ssl():
                         .strip()
                     )
 
+                # Valid From
+
                 before_match = re.search(
                     r"Not valid before:\s*(.+)",
                     output
@@ -101,6 +136,8 @@ def detect_ssl():
                         )
                         .strip()
                     )
+
+                # Valid Until
 
                 after_match = re.search(
                     r"Not valid after:\s*(.+)",
@@ -121,8 +158,10 @@ def detect_ssl():
 
                     if valid_until:
 
-                        clean_date = " ".join(
-                            valid_until.split()
+                        clean_date = (
+                            " ".join(
+                                valid_until.split()
+                            )
                         )
 
                         expiry_date = (
@@ -131,6 +170,11 @@ def detect_ssl():
                                 "%b %d %H:%M:%S %Y GMT"
                             )
                         )
+
+                        days_remaining = (
+                            expiry_date -
+                            datetime.now()
+                        ).days
 
                         if (
                             expiry_date
@@ -155,11 +199,20 @@ def detect_ssl():
 
                 host["ssl"] = {
 
-                    "port": port,
+                    "port":
+                        port,
 
-                    "tls12": tls12,
+                    "tls12":
+                        tls12,
 
-                    "tls13": tls13,
+                    "tls13":
+                        tls13,
+
+                    "tls_status":
+                        tls_status,
+
+                    "recommended_tls":
+                        recommended_tls,
 
                     "certificate_subject":
                         subject,
@@ -170,13 +223,16 @@ def detect_ssl():
                     "valid_until":
                         valid_until,
 
+                    "days_remaining":
+                        days_remaining,
+
                     "expiration_status":
                         expiration_status
                 }
 
                 break
 
-            except Exception as e:
+            except Exception:
 
                 print(
                     f"SSL Error on {ip}:{port}"

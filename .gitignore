@@ -1,4 +1,30 @@
-results/
+# Python
 __pycache__/
 *.pyc
+*.pyo
+
+# Virtual Environment
+venv/
+.env
+
+# Generated Scan Results
+results/
+reports/
+
+# CVE Database
+vulnerability_db/cvelistV5/
+
+# SQLite
+*.db
+*.sqlite
+
+# VS Code
+.vscode/
+
+# React
+dashboard/node_modules/
+dashboard/dist/
+
+# Logs
 *.log
+vulnerability_db/cve_index.json
